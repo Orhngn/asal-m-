@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asal mı? Değil mi?</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            background-image: url(/notepad-calculator-with-felt-pens-arranged-written-chalkboard.jpg);
+            height: 100vh;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .input-menü {
+            position: absolute;
+            width: 33%;
+            top: 33%;
+            left: 33%;
+            text-align: center;
+            font-size: 24px;
+            background-color: rgba(182, 234, 218, 0.4);
+            padding: 12px 24px 24px 24px;
+            border-radius: 24px;
+
+        }
+
+        .sonuc {
+            background-color: #6bbafa92;
+            width: 100%;
+            text-align: center;
+            margin-top: 24PX;
+            border-radius: 12px;
+
+        }
+
+        #sonuc {
+            margin-top: 12px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="input-menü">
+            <h1>Girdiğin Sayı Asal Mı?</h1>
+            <label for="">Sayı Giriniz : </label>
+            <input type="number" id="sayi" placeholder="Sayı Giriniz">
+            <button onclick="sayiGonder()">Gönder</button>
+            <div class="sonuc">
+                <p>SONUÇ BURAYA GELECEK</p>
+                <p id="sonuc"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        let sayac = 0;
+
+        function sayiGonder() {
+            let sayi = document.getElementById('sayi').value;
+            for (let i = 2; i < sayi; i++) {
+                if (sayi % i == 0) {
+                    sayac++;
+                }
+            }
+            if (sayac == 0) {
+                document.getElementById('sonuc').innerHTML = sayi + ' sayısı asal';
+                document.getElementById('sayi').value = '';
+                document.getElementById('sonuc').style.boxShadow = '0 0 25px green';
+            }
+            else {
+                document.getElementById('sonuc').innerHTML = sayi + ' sayısı asal değil';
+                document.getElementById('sayi').value = '';
+                document.getElementById('sonuc').style.boxShadow = '0 0 25px red';
+
+            }
+            sayac = 0;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
